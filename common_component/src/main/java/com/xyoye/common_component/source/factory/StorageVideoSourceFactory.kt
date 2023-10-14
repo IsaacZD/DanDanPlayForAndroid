@@ -14,7 +14,8 @@ import com.xyoye.common_component.storage.file.StorageFile
 
 object StorageVideoSourceFactory {
 
-    suspend fun create(file: StorageFile): StorageVideoSource? {
+    // MOD (10.14.2023) - BEGIN : Added danmuHint
+    suspend fun create(file: StorageFile, danmuHint: String? = null): StorageVideoSource? {
         val storage = file.storage
         val videoSources = getVideoSources(storage)
         val playUrl = storage.createPlayUrl(file) ?: return null
@@ -26,9 +27,11 @@ object StorageVideoSourceFactory {
             videoSources,
             danmuInfo.first,
             danmuInfo.second,
-            subtitlePath
+            subtitlePath,
+            danmuHint,
         )
     }
+    // MOD (10.14.2023) - END
 
     private suspend fun getDanmuInfo(file: StorageFile, storage: Storage): Pair<Int, String?> {
         val danmuNotFound = Pair(0, null)

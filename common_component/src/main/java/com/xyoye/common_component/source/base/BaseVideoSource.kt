@@ -11,6 +11,16 @@ abstract class BaseVideoSource(
     index: Int,
     videoSources: List<*>
 ) : GroupVideoSource(index, videoSources), VideoSource, ExtraSource {
+    // MOD (10.14.2023) - BEGIN : Added danmuHint
+    override fun getDanmuHint(): String? {
+        return null
+    }
+
+    override fun setDanmuHint(hint: String?) {
+
+    }
+    // MOD (10.14.2023) - END
+
     override fun getDanmuPath(): String? {
         return null
     }

@@ -228,4 +228,10 @@ class SettingController(
             hideSettingView()
         }
     }
+
+    // MOD (10.14.2023) - BEGIN : Added danmuHint
+    fun setDanmuSearchHint(hint: String?) {
+        (getSettingView(SettingViewType.SEARCH_DANMU) as SearchDanmuView).setDanmuSearchHint(hint)
+    }
+    // MOD (10.14.2023) - END
 }

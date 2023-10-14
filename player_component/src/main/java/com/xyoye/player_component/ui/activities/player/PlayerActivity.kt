@@ -326,6 +326,13 @@ class PlayerActivity : BaseActivity<PlayerViewModel, ActivityPlayerBinding>(),
         } else {
             videoController.setDanmuPath(videoSource!!.getDanmuPath())
         }
+
+        // MOD (10.14.2023) - BEGIN : Added danmuHint
+        val danmuHint = videoSource!!.getDanmuHint()
+        if (danmuHint != null) {
+            videoController.setDanmuSearchHint(danmuHint)
+        }
+        // MOD (10.14.2023) - END
     }
 
     private fun registerReceiver() {

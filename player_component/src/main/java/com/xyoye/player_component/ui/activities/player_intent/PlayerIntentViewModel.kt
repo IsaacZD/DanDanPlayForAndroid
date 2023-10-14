@@ -47,21 +47,24 @@ class PlayerIntentViewModel : BaseViewModel() {
         }
     }
 
-    fun openIntentUrl(link: String) {
+    // MOD (10.14.2023) - BEGIN : Added danmuHint
+    fun openIntentUrl(link: String, danmuHint: String? = null) {
         viewModelScope.launch(Dispatchers.IO) {
-            if (setupLinkSource(link)) {
+            if (setupLinkSource(link, danmuHint)) {
                 playLiveData.postValue(Any())
             }
         }
     }
+    // MOD (10.14.2023) - END
 
-    private suspend fun setupLinkSource(link: String): Boolean {
+    // MOD (10.14.2023) - BEGIN : Added danmuHint
+    private suspend fun setupLinkSource(link: String, danmuHint: String? = null): Boolean {
         showLoading()
         val mediaSource = MediaLibraryEntity.HISTORY.copy(url = link)
             .run { StorageFactory.createStorage(this) }
             ?.run { this as? LinkStorage }
             ?.run { getRootFile() }
-            ?.run { StorageVideoSourceFactory.create(this) }
+            ?.run { StorageVideoSourceFactory.create(this, danmuHint) }
         hideLoading()
 
         if (mediaSource == null) {
@@ -71,4 +74,5 @@ class PlayerIntentViewModel : BaseViewModel() {
         VideoSourceManager.getInstance().setSource(mediaSource)
         return true
     }
+    // MOD (10.14.2023) - END
 }

@@ -19,10 +19,23 @@ class StorageVideoSource(
     private var episodeId: Int,
     private var danmuPath: String?,
     private var subtitlePath: String?,
+    // MOD (10.14.2023) - BEGIN : Added danmuHint
+    private var danmuHint: String? = null,
+    // MOD (10.14.2023) - END
 ) : BaseVideoSource(
     videoSources.indexOfFirst { it.uniqueKey() == file.uniqueKey() },
     videoSources
 ) {
+
+    // MOD (10.14.2023) - BEGIN : Added danmuHint
+    override fun getDanmuHint(): String? {
+        return danmuHint
+    }
+
+    override fun setDanmuHint(hint: String?) {
+        danmuHint = hint
+    }
+    // MOD (10.14.2023) - END
 
     override fun getDanmuPath(): String? {
         return danmuPath

@@ -53,7 +53,9 @@ class PlayerIntentActivity : BaseActivity<PlayerIntentViewModel, ActivityPlayerI
             viewModel.addUnrecognizedFile(videoUrl)
         }
 
-        viewModel.openIntentUrl(videoUrl)
+        // MOD (10.14.2023) - BEGIN : Added danmuHint
+        viewModel.openIntentUrl(videoUrl, intent.getStringExtra("danmu_hint"))
+        // MOD (10.14.2023) - END
     }
 
     private fun observerPlay() {

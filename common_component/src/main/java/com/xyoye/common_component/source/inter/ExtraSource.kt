@@ -7,6 +7,12 @@ package com.xyoye.common_component.source.inter
  */
 
 interface ExtraSource {
+    // MOD (10.14.2023) - BEGIN : Added danmuHint
+    fun getDanmuHint(): String?
+
+    fun setDanmuHint(hint: String?)
+    // MOD (10.14.2023) - END
+
     fun getDanmuPath(): String?
 
     fun setDanmuPath(path: String)

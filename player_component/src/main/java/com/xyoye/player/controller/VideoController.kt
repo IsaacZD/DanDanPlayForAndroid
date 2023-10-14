@@ -169,6 +169,12 @@ class VideoController(
         mControlWrapper.onDanmuSourceChanged(url ?: "")
     }
 
+    // MOD (10.14.2023) - BEGIN : Added danmuHint
+    fun setDanmuSearchHint(hint: String?) {
+        mSettingController.setDanmuSearchHint(hint)
+    }
+    // MOD (10.14.2023) - END
+
     /**
      * 设置初始字幕路径
      */

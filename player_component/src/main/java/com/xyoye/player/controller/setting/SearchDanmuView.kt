@@ -209,4 +209,10 @@ class SearchDanmuView(
 
         return false
     }
+
+    // MOD (10.14.2023) - BEGIN : Added danmuHint
+    fun setDanmuSearchHint(hint: String?) {
+        viewBinding.searchDanmuEt.setText(hint)
+    }
+    // MOD (10.14.2023) - END
 }
