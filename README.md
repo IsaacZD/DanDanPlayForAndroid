@@ -1,4 +1,7 @@
 # [DanDanPlayForAndroid](https://github.com/xyoye/DanDanPlayForAndroid)
+## 个人新增功能
+### 使用DanDanPlay播放时自动填入番剧名称到弹幕搜索框，避免TV上手动输入的麻烦
+需使用修改版[DanDanPlay](https://github.com/IsaacZD/DanDanPlayForAndroid)
 
 ## 简介
 
